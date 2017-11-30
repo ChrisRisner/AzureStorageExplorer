@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="AzureStorageExplorer.QueueMessageDetailsPage"
+	xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+	xmlns:pull="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+	Title="Queue Message Details">
+	<ContentPage.Content>
+		
+		<ScrollView>
+			<StackLayout
+					Orientation="Vertical"
+					BackgroundColor="{DynamicResource WindowBackgroundTable}"
+					Spacing="{DynamicResource CardSpacing}"
+					Padding="{DynamicResource CardPadding}">
+				<local:CardView>
+					<StackLayout Orientation="Vertical" Spacing="0">
+						<local:LabelSection Text="{Binding QueueMessage.Id}" />
+						<local:HeaderDivider />
+
+						<Grid Padding="{StaticResource StandardPadding}">
+							<Grid.RowDefinitions>
+            					<RowDefinition Height="*"/>
+					            <RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+					        </Grid.RowDefinitions>
+	                        <Grid.ColumnDefinitions>
+	                            <ColumnDefinition Width="Auto"/>
+	                            <ColumnDefinition Width="*"/>
+	                        </Grid.ColumnDefinitions>
+	                        <Label Text="Insertion" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Column="1" HorizontalOptions="End" Text="{Binding InsertionLocalTime}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+							
+							<Label Grid.Row="1" Text="Expiration" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Text="{Binding ExpirationLocalTime}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+
+	                        <Label Grid.Row="2" Text="Dequeue Count" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Text="{Binding QueueMessage.DequeueCount}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+
+	                    </Grid>
+
+						<local:SectionDivider />
+
+						<Grid Padding="{StaticResource StandardPadding}">
+							<Grid.RowDefinitions>
+            					<RowDefinition Height="*"/>
+					            <RowDefinition Height="*"/>
+					        </Grid.RowDefinitions>
+	                        <Grid.ColumnDefinitions>
+	                            <ColumnDefinition Width="*"/>
+	                        </Grid.ColumnDefinitions>
+							<Label Grid.Row="0" Text="Message Text:" Style="{DynamicResource ASEListItemTextStyle}" />
+							<Label Grid.Row="1" Text="{Binding QueueMessage.AsString}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}"/>
+						</Grid>
+						<local:FooterDivider/>
+					</StackLayout>
+				</local:CardView>
+				<local:CardView>
+				</local:CardView>
+			</StackLayout>
+		</ScrollView>		
+	</ContentPage.Content>
+</ContentPage>

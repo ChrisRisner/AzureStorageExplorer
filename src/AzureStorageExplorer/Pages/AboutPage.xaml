@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="AzureStorageExplorer.Pages.AboutPage"
+    Title="About this App"
+    Icon="tab_feed.png"
+    Padding="30,30,30,30">
+	<ContentPage.Content>
+        <!--<StackLayout Orientation="Vertical" Spacing="0">
+                        <local:LabelSection Text="" />
+                        <local:HeaderDivider />-->
+            <Grid Padding="{StaticResource StandardPadding}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="*"/>
+
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="This app was created to enable you to access your Azure Storage Accounts from your mobile device.  This includes access to Containers, Queues, Tables, and more." />
+                <Label Grid.Row="1" Grid.ColumnSpan="2" Text="If you have feedback about the app, please contact BetaASE@chrisrisner.com" />
+                <Label Grid.Row="2" Grid.Column="0" Text="Version Number:" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding VersionNumber}" />
+            </Grid>
+        <!--</StackLayout>-->
+	</ContentPage.Content>
+</ContentPage>

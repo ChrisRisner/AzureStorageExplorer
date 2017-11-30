@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.SectionDivider"
+		BackgroundColor="White">
+    <ContentView.Padding>
+        <OnPlatform x:TypeArguments="Thickness">
+            <On Platform="Android" Value="0" />
+            <On Platform="iOS" Value="16,0,0,0" />
+            <On Platform="WinPhone" Value="0" />
+        </OnPlatform>
+    </ContentView.Padding>
+    <ContentView.Content>
+        <BoxView 
+        HorizontalOptions="FillAndExpand" 
+        BackgroundColor="{DynamicResource Divider}">
+            <BoxView.HeightRequest>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="Android" Value="11" />
+                    <On Platform="iOS" Value=".5" />
+                    <On Platform="WinPhone" Value="1" />
+                </OnPlatform>
+            </BoxView.HeightRequest>
+        </BoxView>
+    </ContentView.Content>
+</ContentView>

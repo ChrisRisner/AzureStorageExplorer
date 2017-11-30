@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.SubscriptionsPage"
+		xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		x:Name="SubscriptionsPage"
+		Title="Subscriptions"
+		Icon="tab_feed.png">
+	<ContentPage.Content>
+		<Grid RowSpacing="0">
+			<Grid.RowDefinitions>
+	            <RowDefinition Height="*"/>
+	        </Grid.RowDefinitions>
+			<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<ListView
+						x:Name="lvSubscriptions"
+						ItemsSource="{Binding Subscriptions}"
+						CachingStrategy="RecycleElement"
+						IsVisible="{Binding IsNotBusy}"
+						HasUnevenRows ="true"
+						ItemTapped="ListViewTapped"
+						AbsoluteLayout.LayoutFlags="All" 
+            			AbsoluteLayout.LayoutBounds="0,0,1,1"
+						>
+					<ListView.SeparatorColor>
+		                <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                            <On Platform="WinPhone" Value="{StaticResource ListSeparator}" />
+                        </OnPlatform>
+		            </ListView.SeparatorColor>
+
+					<ListView.ItemTemplate>
+				        <DataTemplate>
+				          <ViewCell>
+				             <local:SubscriptionCellView />
+				          </ViewCell>
+							<!--<SwitchCell Text="{Binding Name}" On="{Binding IsSubOn}" />-->
+				        </DataTemplate> 
+			      	</ListView.ItemTemplate>
+			    </ListView>
+			    <StackLayout IsVisible="{Binding IsBusy}"
+                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+                                    <StackLayout.Orientation>
+                                    <OnPlatform x:TypeArguments="StackOrientation">
+                                        <On Platform="iOS" Value="Horizontal" />
+                                    </OnPlatform>
+                                   </StackLayout.Orientation>
+		            <ActivityIndicator IsRunning="{Binding IsBusy}" >
+		                <ActivityIndicator.Color>
+		                    <OnPlatform x:TypeArguments="Color">
+                                    <On Platform="Android" Value="{StaticResource Accent}" />
+                            </OnPlatform>
+		                </ActivityIndicator.Color>
+		            </ActivityIndicator>
+		            <Label Text="Loading Subscriptions..." HorizontalOptions="Center" Style="{DynamicResource ASEListItemTextStyle}"/>
+		       </StackLayout>
+		        <StackLayout IsVisible="{Binding NoSubscriptionsFound}"
+		                                   HorizontalOptions="FillAndExpand"
+		                                   VerticalOptions="CenterAndExpand"
+		                                   AbsoluteLayout.LayoutFlags="All"
+		                                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+		                    BackgroundColor="{DynamicResource WindowBackground}"
+		                    Padding="16,0">
+		            <Label Text="{Binding NoSubscriptionsFoundMessage}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="22" TextColor="#D3D2D2"/>
+		       </StackLayout>
+			</AbsoluteLayout>
+
+			
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

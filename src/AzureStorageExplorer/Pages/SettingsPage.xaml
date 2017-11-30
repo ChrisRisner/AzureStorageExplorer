@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.SettingsPage"
+        xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		Title="Settings"
+		Icon="tab_feed.png"
+		>
+	<ContentPage.Content >
+        
+        <ScrollView>
+            <StackLayout
+                    Orientation="Vertical"
+                    BackgroundColor="{DynamicResource WindowBackgroundTable}"
+                    Spacing="{DynamicResource CardSpacing}"
+                    Padding="{DynamicResource CardPadding}">
+                <local:CardView>
+                    <StackLayout Orientation="Vertical" Spacing="0">
+                        <local:LabelSection Text="Data Storage" />
+                        <local:HeaderDivider />
+                        <Button Text="Delete Local Blobs" 
+                            BackgroundColor="{StaticResource PrimaryDark}"
+                            TextColor="White"
+                            Command="{Binding DeleteLocalBlobsCommand}" />
+                    </StackLayout>
+                </local:CardView>
+
+                <local:CardView>
+                    <StackLayout Orientation="Vertical" Spacing="0">
+                        <local:LabelSection Text="Account" />
+                        <local:HeaderDivider />                         
+                        <Button Text="Logout"                            
+                            BackgroundColor="{StaticResource PrimaryDark}"
+                            TextColor="White"
+                            Command="{Binding LogoutCommand}" />
+                    </StackLayout>
+                </local:CardView>
+
+                <local:CardView>
+                     <StackLayout Spacing="0">
+                        <local:LabelSection>
+                            <local:LabelSection.Text>
+                                <OnPlatform x:TypeArguments="x:String" Android="About the App" iOS=" " WinPhone="About the App"/>
+                            </local:LabelSection.Text>
+                        </local:LabelSection>
+                        <local:HeaderDivider/>
+                        <local:NonScrollableListView 
+                            x:Name="ListViewAbout"
+                            ItemsSource="{Binding AboutItems}"
+                            RowHeight="44"> 
+                            <local:NonScrollableListView.SeparatorColor>
+                                <OnPlatform x:TypeArguments="Color" iOS="{StaticResource ListSeparator}"/>
+                            </local:NonScrollableListView.SeparatorColor>
+                            <local:NonScrollableListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding Name}" 
+                                               Detail="{Binding Subtitle}" 
+                                               Command="{Binding Command}" 
+                                               CommandParameter="{Binding Parameter}" 
+                                               StyleId="disclosure"/>
+                                </DataTemplate>
+                            </local:NonScrollableListView.ItemTemplate>
+                        </local:NonScrollableListView>
+                        <local:FooterDivider/>
+                        <StackLayout>
+                            <StackLayout.Padding>
+                                <OnPlatform x:TypeArguments="Thickness" iOS="16,8,16,0" Android="16,8" WinPhone="16,8"/>
+                            </StackLayout.Padding>
+                            <Label Text="Copyright 2017 - Chris Risner" 
+                                   Style="{DynamicResource EvolveListItemDetailTextStyle}"/>
+                        </StackLayout>
+                    </StackLayout>
+                </local:CardView>
+
+                <local:CardView>
+                     <StackLayout Spacing="0">
+                        <local:LabelSection Text="Technology Used"/>
+                        <local:HeaderDivider/>
+                        <local:NonScrollableListView 
+                            x:Name="ListViewTechnology"
+                            ItemsSource="{Binding TechnologyItems}"
+                            RowHeight="44"> 
+                            <local:NonScrollableListView.SeparatorColor>
+                                <OnPlatform x:TypeArguments="Color" iOS="{StaticResource ListSeparator}"/>
+                            </local:NonScrollableListView.SeparatorColor>
+                            <local:NonScrollableListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding Name}" 
+                                               Detail="{Binding Subtitle}" 
+                                               Command="{Binding Command}" 
+                                               CommandParameter="{Binding Parameter}" 
+                                               StyleId="disclosure"/>
+                                </DataTemplate>
+                            </local:NonScrollableListView.ItemTemplate>
+                        </local:NonScrollableListView>
+                         <local:FooterDivider/>
+                        
+                    </StackLayout>
+                </local:CardView>
+
+                <Button Text="About" 
+                            Command="{Binding AboutCommand}" />
+            </StackLayout>
+        </ScrollView>
+	</ContentPage.Content>
+</ContentPage>

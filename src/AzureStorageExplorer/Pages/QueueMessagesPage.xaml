@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.QueueMessagesPage"
+		xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials"
+		Title="Queue Messages"
+		Icon="tab_queues.png">	
+	<ContentPage.Content>
+		<Grid RowSpacing="0">
+			<Grid.RowDefinitions>
+	            <RowDefinition Height="*"/>
+	        </Grid.RowDefinitions>
+			<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<ListView
+					x:Name="lvQueueMessages"
+					ItemsSource="{Binding SortedQueueMessages}"
+					CachingStrategy="RecycleElement"
+					IsVisible="{Binding IsNotBusy}"
+					IsPullToRefreshEnabled="{Binding IsNotBusy}"
+					RefreshCommand="{Binding ForceRefreshCommand}"
+					IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+					fe:ListViewItemTappedAttached.Command="{Binding ItemTapCommand}"
+					HasUnevenRows ="true"
+					AbsoluteLayout.LayoutFlags="All" 
+        			AbsoluteLayout.LayoutBounds="0,0,1,1"
+					>
+					<ListView.SeparatorColor>
+		                <OnPlatform x:TypeArguments="Color" >
+                            <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                            <On Platform="WinPhone" Value="{StaticResource ListSeparator}" />
+                        </OnPlatform>
+		            </ListView.SeparatorColor>
+		            <ListView.Header>
+						<local:CardView>
+							<StackLayout Orientation="Vertical" Spacing="0">
+						    <!--<StackLayout Padding="10,5,0,5" BackgroundColor="#cccccc">-->
+						    <Grid Padding="{StaticResource StandardPadding}">
+								<Grid.RowDefinitions>
+	            					<RowDefinition Height="*"/>
+						        </Grid.RowDefinitions>
+		                        <Grid.ColumnDefinitions>
+		                            <ColumnDefinition Width="Auto"/>
+		                            <ColumnDefinition Width="*"/>
+		                        </Grid.ColumnDefinitions>
+		                        	<Label Text="Message Count" Grid.Row="0" Style="{DynamicResource ASEListItemTextStyle}"/>
+									<Label Text="{Binding QueueMessageCount}" Grid.Row="0" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+								</Grid>
+								
+						        <local:SectionDivider />
+						    <!--</StackLayout>-->
+							</StackLayout>
+						</local:CardView>
+					  </ListView.Header>
+					<ListView.ItemTemplate>
+				        <DataTemplate>
+				          <ViewCell>
+				             <local:QueueMessageCellView />
+				          </ViewCell>
+				        </DataTemplate> 
+			      	</ListView.ItemTemplate>
+			    </ListView>
+			    <StackLayout IsVisible="{Binding IsBusy}"
+	                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+	                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+	                                    <StackLayout.Orientation>
+	                                    <OnPlatform x:TypeArguments="StackOrientation" >
+                                            <On Platform="iOS" Value="Horizontal" />                                             
+                                        </OnPlatform>
+	                                   </StackLayout.Orientation>
+			            <ActivityIndicator IsRunning="{Binding IsBusy}" >
+			                <ActivityIndicator.Color>
+			                    <OnPlatform x:TypeArguments="Color" >
+                                    <On Platform="Android" Value="{StaticResource Accent}" />                                             
+                                </OnPlatform>
+			                </ActivityIndicator.Color>
+			            </ActivityIndicator>
+			            <Label Text="Loading Messages..." HorizontalOptions="Center" Style="{DynamicResource ASEListItemTextStyle}"/>
+			       </StackLayout>
+			        <StackLayout IsVisible="{Binding NoQueueMessagesFound}"
+			                                   HorizontalOptions="FillAndExpand"
+			                                   VerticalOptions="CenterAndExpand"
+			                                   AbsoluteLayout.LayoutFlags="All"
+			                                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+			                    BackgroundColor="{DynamicResource WindowBackground}"
+			                    Padding="16,0">
+			            <Label Text="{Binding NoQueueMessagesFoundMessage}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="22" TextColor="#D3D2D2"/>
+			       </StackLayout>							       
+			</AbsoluteLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

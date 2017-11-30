@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	x:Class="AzureStorageExplorer.MorePage"
+	xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+	xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials"
+	Title="More"
+	Icon="tab_feed.png"
+	BackgroundColor="{DynamicResource WindowBackgroundTable}">
+	<local:AlwaysScrollView  Grid.RowSpan="2">		
+		<StackLayout Spacing="0"> 
+			<StackLayout 
+                BackgroundColor="{DynamicResource WindowBackgroundTable}"
+                Spacing="{DynamicResource CardSpacing}"
+                Padding="{DynamicResource CardPadding}">
+				<local:CardView>
+					<StackLayout Spacing="0">
+						<local:LabelSection Text="Other Storage Features"/>
+						<local:HeaderDivider/>
+						<local:NonScrollableListView 
+                            x:Name="lvStorageFeatures"
+                            ItemsSource="{Binding StorageFeatures}"
+                            RowHeight="44"> 
+                            <local:NonScrollableListView.SeparatorColor>
+                                <OnPlatform x:TypeArguments="Color">
+                                    <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                                </OnPlatform>
+                            </local:NonScrollableListView.SeparatorColor>
+                            <local:NonScrollableListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding Name}" 
+                                               StyleId="disclosure"/>
+                                </DataTemplate>
+                            </local:NonScrollableListView.ItemTemplate>
+                        </local:NonScrollableListView>
+                        <local:FooterDivider/>
+					</StackLayout>
+				</local:CardView>
+
+				<local:CardView>
+                     <StackLayout Spacing="0">
+                        <local:LabelSection Text="Settings"/>
+                        <local:HeaderDivider/>
+                        <local:NonScrollableListView 
+                            x:Name="lvSettings"
+                            ItemsSource="{Binding SettingsItems}"
+                            RowHeight="44"> 
+                            <local:NonScrollableListView.SeparatorColor>
+                                <OnPlatform x:TypeArguments="Color">
+                                    <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                                </OnPlatform>
+                            </local:NonScrollableListView.SeparatorColor>
+                            <local:NonScrollableListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextCell Text="{Binding Name}" 
+                                               StyleId="disclosure"/>
+                                </DataTemplate>
+                            </local:NonScrollableListView.ItemTemplate>
+                        </local:NonScrollableListView>
+                        <local:FooterDivider/>
+                    </StackLayout>
+                </local:CardView>
+			</StackLayout>
+		</StackLayout>
+	</local:AlwaysScrollView>
+</ContentPage>

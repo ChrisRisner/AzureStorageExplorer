@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/nav_section_main"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_storageaccounts"
+            android:icon="@drawable/menu_storage_accounts"
+            android:title="Storage Accounts"/>		
+        <item
+            android:id="@+id/nav_containers"
+            android:icon="@drawable/menu_blobs"
+            android:title="Containers"/>
+        <item
+            android:id="@+id/nav_queues"
+            android:icon="@drawable/menu_queues"
+            android:title="Queues" />
+        <item
+        	android:id="@+id/nav_tables"
+            android:icon="@drawable/menu_tables"
+            android:title="Tables" />
+		<item
+        	android:id="@+id/nav_files"
+            android:icon="@drawable/menu_files"
+            android:title="Files" />
+		<item
+            android:id="@+id/nav_subscriptions"
+            android:icon="@drawable/menu_subscriptions"
+            android:title="Subscriptions"/>
+		<item
+        	android:id="@+id/nav_settings"
+            android:icon="@drawable/menu_settings"
+            android:title="Settings" />
+    </group>
+
+     <!--<item android:title="Information" >
+        <menu>
+
+            <item
+                android:id="@+id/nav_sponsors"
+                android:icon="@drawable/icon"
+                android:title="Sponsors"
+                android:checkable="true" />
+            <item
+                android:id="@+id/nav_evals"
+                android:icon="@drawable/icon"
+                android:title="Evaluations"
+                android:checkable="true" />
+            <item
+                android:id="@+id/nav_venue"
+                android:icon="@drawable/icon"
+                android:title="Venue"
+                android:checkable="true" />
+            <item
+                android:id="@+id/nav_floor_map"
+                android:icon="@drawable/icon"
+                android:title="Floor Maps"
+                android:checkable="true" />
+            <item
+                android:id="@+id/nav_conference_info"
+                android:icon="@drawable/icon"
+                android:title="Conference Info"
+                android:checkable="true" />
+            
+        </menu>
+    </item>-->
+</menu>

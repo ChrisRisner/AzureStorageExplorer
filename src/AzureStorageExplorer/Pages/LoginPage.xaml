@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:imagecircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+	xmlns:toolkit="clr-namespace:FormsToolkit;assembly=FormsToolkit"
+	x:Class="AzureStorageExplorer.LoginPage"
+	Title="Azure Storage Explorer"
+	BackgroundColor="{DynamicResource WindowBackground}">
+	<ScrollView>
+		 <Grid RowSpacing="{StaticResource MediumSpacing}" 
+          		ColumnSpacing="{StaticResource MediumSpacing}">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition Height="*" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<StackLayout  Grid.Row="0" Spacing="0" Padding="0">
+				<StackLayout>
+					<StackLayout.Spacing>
+	                    <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="12" />
+                            <On Platform="iOS" Value="30" />
+                            <On Platform="WinPhone" Value="12" />
+                        </OnPlatform>
+	                </StackLayout.Spacing>
+	                <StackLayout.Padding>
+	                    <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="32,24,32,24" />
+                            <On Platform="iOS" Value="16,24,16,24" />
+                            <On Platform="WinPhone" Value="32,24" />
+                        </OnPlatform>
+	                </StackLayout.Padding>
+					<imagecircle:CircleImage 
+						HorizontalOptions="Center"
+						VerticalOptions="Center"
+						WidthRequest="95" HeightRequest="95"
+						BorderColor="{StaticResource Primary}"
+						BorderThickness="2"
+						Aspect="AspectFill"
+						x:Name="CircleImageAvatar"/>
+					<!--<ContentView>
+						<OnPlatform x:TypeArguments="View">
+							<OnPlatform.Android>
+								<Label HorizontalTextAlignment="Center"
+									HorizontalOptions="FillAndExpand"
+									LineBreakMode="WordWrap"
+									FontSize="0.0"
+									Text="Azure Storage Explorer">
+										<Label.FontSize>
+					                        <OnPlatform x:TypeArguments="x:Double" Android="24" iOS="0" WinPhone="24"/>
+					                    </Label.FontSize>
+									</Label>
+							</OnPlatform.Android>
+						</OnPlatform>
+					</ContentView>-->
+
+					
+					<Label HorizontalTextAlignment="Center"
+						HorizontalOptions="FillAndExpand"
+						LineBreakMode="WordWrap"
+						FontSize="Large"
+						StyleId="LoginPageIdentifier"
+                        Style="{DynamicResource ASEListItemTextStyle}"
+						Text="Sign in with your Microsoft account or a work or school account.">
+							<Label.FontSize>
+		                        <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="20" />
+                                    <On Platform="iOS" Value="15" />
+                                    <On Platform="WinPhone" Value="15" />
+                                </OnPlatform>
+		                    </Label.FontSize>
+						</Label>
+				</StackLayout>
+				<StackLayout>
+		           <StackLayout.Padding>
+	                    <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="32,16,32,0" />
+                            <On Platform="iOS" Value="32,0,32,0" />
+                            <On Platform="WinPhone" Value="32,16,32,0" />
+                        </OnPlatform>
+	                </StackLayout.Padding>
+	                <StackLayout.Spacing>
+	                    <OnPlatform x:TypeArguments="x:Double">
+                            <On Platform="Android" Value="0" />
+                            <On Platform="iOS" Value="16" />
+                            <On Platform="WinPhone" Value="10" />
+                        </OnPlatform>
+	                </StackLayout.Spacing>
+	                <Button 
+	                    Text="Sign In"
+	                    Command="{Binding LoginCommand}"
+	                    HorizontalOptions="FillAndExpand"
+	                    IsEnabled="{Binding IsNotBusy}"
+	                    StyleId="SignInButton"
+	                    TextColor="White"
+	                    BackgroundColor="{StaticResource Primary}">
+
+	                    <Button.FontAttributes>
+	                        <OnPlatform x:TypeArguments="FontAttributes">
+                                <On Platform="iOS" Value="Bold" />
+                            </OnPlatform>
+	                    </Button.FontAttributes>
+	                </Button>
+	                <Button
+	                    Text="Not Now"                                     
+	                    Command="{Binding CancelCommand}"
+	                    IsEnabled="{Binding IsNotBusy}"
+	                    StyleId="NotNowButton"
+						IsVisible="false">
+
+	                    <Button.FontAttributes>
+	                        <OnPlatform x:TypeArguments="FontAttributes">
+                                <On Platform="iOS" Value="Bold" />
+                            </OnPlatform>
+	                    </Button.FontAttributes>
+	                    <Button.BackgroundColor>
+	                        <OnPlatform x:TypeArguments="Color">
+                                <On Platform="iOS" Value="Transparent" />
+                            </OnPlatform>
+	                    </Button.BackgroundColor>
+	                    <Button.TextColor>
+	                        <OnPlatform x:TypeArguments="Color">
+                                <On Platform="iOS" Value="{StaticResource PrimaryDark}" />
+                            </OnPlatform>
+	                    </Button.TextColor>
+	                    <Button.BorderWidth>
+	                        <OnPlatform x:TypeArguments="x:Double">
+                                <On Platform="iOS" Value="1" />
+                            </OnPlatform>
+	                    </Button.BorderWidth> 
+	                    <Button.BorderColor>
+	                       <OnPlatform x:TypeArguments="Color">
+                                <On Platform="iOS" Value="{StaticResource ButtonBorder}" />
+                            </OnPlatform>
+	                    </Button.BorderColor> 
+	                </Button>
+	           </StackLayout>
+			</StackLayout>
+
+			<StackLayout Grid.Row="1" Padding="16,0" VerticalOptions="Center" Orientation="Horizontal" HorizontalOptions="Center">
+	            <ActivityIndicator IsRunning="{Binding IsBusy}">
+	                <ActivityIndicator.Color>
+	                    <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="{StaticResource Accent}" />
+                        </OnPlatform>
+	                </ActivityIndicator.Color>
+	            </ActivityIndicator>
+	             <Label Text="{Binding Message}" 
+					VerticalOptions="Center"  HorizontalOptions="Center" 
+					LineBreakMode="WordWrap"						
+					>
+						<Label.FontSize>
+		                        <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="16" />
+                                    <On Platform="iOS" Value="12" />
+                                </OnPlatform>
+		                    </Label.FontSize>
+					</Label>
+	      </StackLayout>
+
+			<StackLayout Grid.Row="2" HorizontalOptions="Center" Orientation="Horizontal" 
+					Padding="16,0,16,12" Spacing="{StaticResource SmallSpacing}">
+	            <Label
+	                Text="Don't have an Azure account yet?" 
+	                TextColor="{DynamicResource DetailTextColor}"
+					FontSize="Small"
+					Style="{DynamicResource ASEListTextStyle}"/>
+	            <Label Text="Sign Up." 
+	                   TextColor="{StaticResource Primary}"
+	                   VerticalOptions="Center"
+					   FontAttributes="Bold"	
+						FontSize="Small"
+	                   IsEnabled="{Binding IsNotBusy}"
+						Style="{DynamicResource ASEListTextStyleBold}">
+	                <Label.Font>
+	                    <OnPlatform x:TypeArguments="Font">
+                            <On Platform="Android" Value="Semibold" />
+                            <On Platform="iOS" Value="Semibold" />
+                        </OnPlatform>
+	                </Label.Font>
+	              <Label.GestureRecognizers>
+	                <TapGestureRecognizer Command="{Binding SignupCommand}"/>
+	              </Label.GestureRecognizers>
+	            </Label>
+	        </StackLayout>
+		</Grid>
+	</ScrollView>
+</ContentPage>

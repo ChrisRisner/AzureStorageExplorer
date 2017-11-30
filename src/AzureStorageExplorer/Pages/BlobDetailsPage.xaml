@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.BlobDetailsPage"
+		xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		xmlns:pull="clr-namespace:Refractored.XamForms.PullToRefresh;assembly=Refractored.XamForms.PullToRefresh"
+		Title="Blob Details">
+	<ContentPage.Resources>
+     <ResourceDictionary>
+        <local:BoolConverter x:Key="BoolInversionConverter" />
+     </ResourceDictionary>
+    </ContentPage.Resources>
+	<ContentPage.Content>
+		<pull:PullToRefreshLayout
+          IsPullToRefreshEnabled="True"
+          RefreshCommand="{Binding ForceRefreshCommand}"
+          IsRefreshing="{Binding IsBusy}"> 
+          <pull:PullToRefreshLayout.RefreshColor>
+            <OnPlatform x:TypeArguments="Color">
+                <On Platform="Android" Value="{StaticResource Primary}" />               
+            </OnPlatform>
+          </pull:PullToRefreshLayout.RefreshColor>
+			<!--<Grid RowSpacing="0" >
+				<Grid.RowDefinitions>
+		            <RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+					<RowDefinition Height="Auto"/>
+		        </Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>-->
+
+			<ScrollView>
+			<StackLayout
+					Orientation="Vertical"
+					BackgroundColor="{DynamicResource WindowBackgroundTable}"
+					Spacing="{DynamicResource CardSpacing}"
+					Padding="{DynamicResource CardPadding}">
+				<local:CardView>
+					<StackLayout Orientation="Vertical" Spacing="0">
+						<local:LabelSection Text="{Binding Blob.Name}" />
+						<local:HeaderDivider />
+
+						<Grid Padding="{StaticResource StandardPadding}">
+							<Grid.RowDefinitions>
+            					<RowDefinition Height="*"/>
+					            <RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+								<RowDefinition Height="*"/>
+					        </Grid.RowDefinitions>
+	                        <Grid.ColumnDefinitions>
+	                            <ColumnDefinition Width="Auto"/>
+	                            <ColumnDefinition Width="*"/>
+	                        </Grid.ColumnDefinitions>
+	                        <Label Text="Blob Type" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Column="1" HorizontalOptions="End" Text="{Binding Blob.BlobType}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+							<Label Grid.Row="1" Text="Size" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="End" Text="{Binding BlobSize}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+
+	                        <Label Grid.Row="2" Text="Etag" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="2" Grid.Column="1" HorizontalOptions="End" Text="{Binding Blob.Properties.ETag}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+
+	                        <Label Grid.Row="3" Text="Last Modified" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="3" Grid.Column="1" HorizontalOptions="End" Text="{Binding LastModifiedLocalTime}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+							
+							<Label Grid.Row="4" Text="Lease State" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="4" Grid.Column="1" HorizontalOptions="End" Text="{Binding Blob.Properties.LeaseState}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+
+							<Label Grid.Row="5" Text="Lease Status" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>
+	                        <Label Grid.Row="5" Grid.Column="1" HorizontalOptions="End" Text="{Binding Blob.Properties.LeaseStatus}" Style="{DynamicResource ASEListItemTextStyle}" TextColor="{DynamicResource DetailTextColor}" VerticalTextAlignment="Center"/>
+
+							
+
+	                    </Grid>
+						<local:SectionDivider />
+						<StackLayout Padding="16,0">
+							<!--<Label Text="Blob Type" Style="{DynamicResource ASEListItemTextStyle}" VerticalTextAlignment="Center"/>-->
+						</StackLayout>
+						<local:FooterDivider/>
+					</StackLayout>
+				</local:CardView>
+
+				<local:CardView>
+					<StackLayout Orientation="Vertical" Spacing="0">
+						<local:LabelSection Text="Local Blob" />
+						<local:HeaderDivider />
+						<Button Text="Download" 
+							Command="{Binding DownloadBlobCommand}"
+							HorizontalOptions="CenterAndExpand" 
+							IsVisible="{Binding HasBlobBeenSaved, Converter={StaticResource BoolInversionConverter}}" />
+						<Image Source="{Binding BlobImageSource}" IsVisible="{Binding IsBlobSavedAndImage}" />
+						<Button Text="Share Blob" 
+							Command="{Binding ShareBlobCommand}"
+							HorizontalOptions="CenterAndExpand" 
+							IsVisible="{Binding HasBlobBeenSaved}" />
+							
+					</StackLayout>
+				</local:CardView>
+			<!--</Grid>-->
+			</StackLayout>
+				</ScrollView>
+		</pull:PullToRefreshLayout>
+	</ContentPage.Content>
+</ContentPage>

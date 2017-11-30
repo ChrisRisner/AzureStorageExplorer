@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.ContainersPage"
+		xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials"
+		Title="Containers"
+		Icon="tab_blobs.png">
+
+	<ContentPage.ToolbarItems>
+  		<ToolbarItem x:Name="tbiAddContainer" Text="New" />
+	</ContentPage.ToolbarItems>
+	<ContentPage.Content>
+		<Grid RowSpacing="0">
+			<Grid.RowDefinitions>
+	            <RowDefinition Height="*"/>
+	        </Grid.RowDefinitions>
+			<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<ListView
+						x:Name="lvContainers"
+						ItemsSource="{Binding ContainersGrouped}"
+						GroupDisplayBinding="{Binding Key}"
+						IsGroupingEnabled="true"
+						CachingStrategy="RecycleElement"
+						IsVisible="{Binding IsNotBusy}"
+						IsPullToRefreshEnabled="{Binding IsNotBusy}"
+						RefreshCommand="{Binding ForceRefreshCommand}"
+						IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+						HasUnevenRows ="true"
+						fe:ListViewItemTappedAttached.Command="{Binding ItemTapCommand}"
+						AbsoluteLayout.LayoutFlags="All" 
+            			AbsoluteLayout.LayoutBounds="0,0,1,1"
+						>
+					<ListView.SeparatorColor>
+		                <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                            <On Platform="WinPhone" Value="{StaticResource ListSeparator}" />
+                        </OnPlatform>
+		            </ListView.SeparatorColor>
+		            <ListView.GroupHeaderTemplate>
+			            <DataTemplate>
+			                <ViewCell>
+			                    <ViewCell.Height>
+			                        <OnPlatform x:TypeArguments="x:Double">                                        
+                                        <On Platform="iOS" Value="28" />
+                                    </OnPlatform>
+			                    </ViewCell.Height>
+			                    <local:ASEGroupHeaderView/>
+			                </ViewCell>
+			            </DataTemplate>
+			        </ListView.GroupHeaderTemplate>
+					<ListView.ItemTemplate>
+				        <DataTemplate>
+				          <ViewCell>
+				             <local:ContainerCellView />
+				          </ViewCell>
+							<!--<SwitchCell Text="{Binding Name}" On="{Binding IsSubOn}" />-->
+				        </DataTemplate> 
+			      	</ListView.ItemTemplate>
+			    </ListView>
+			    <StackLayout IsVisible="{Binding IsBusy}"
+	                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+	                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+	                                    <StackLayout.Orientation>
+	                                    <OnPlatform x:TypeArguments="StackOrientation">
+                                            <On Platform="iOS" Value="Horizontal" />
+                                        </OnPlatform>
+	                                   </StackLayout.Orientation>
+			            <ActivityIndicator IsRunning="{Binding IsBusy}" >
+			                <ActivityIndicator.Color>
+			                    <OnPlatform x:TypeArguments="Color">
+                                    <On Platform="Android" Value="{StaticResource Accent}" />
+                                </OnPlatform>
+			                </ActivityIndicator.Color>
+			            </ActivityIndicator>
+			            <Label Text="Loading Containers..." HorizontalOptions="Center" Style="{DynamicResource ASEListItemTextStyle}"/>
+			       </StackLayout>
+			        <StackLayout IsVisible="{Binding NoContainersFound}"
+			                                   HorizontalOptions="FillAndExpand"
+			                                   VerticalOptions="CenterAndExpand"
+			                                   AbsoluteLayout.LayoutFlags="All"
+			                                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+			                    BackgroundColor="{DynamicResource WindowBackground}"
+			                    Padding="16,0">
+			            <Label Text="{Binding NoContainersFoundMessage}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="22" TextColor="#D3D2D2"/>
+			       </StackLayout>
+			</AbsoluteLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

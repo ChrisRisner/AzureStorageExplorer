@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.BlobsPage"
+		xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials"
+		Title="Blobs"
+		Icon="tab_blobs.png">	
+	<ContentPage.Content>
+		<Grid RowSpacing="0">
+			<Grid.RowDefinitions>
+	            <RowDefinition Height="*"/>
+	        </Grid.RowDefinitions>
+			<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<ListView
+					x:Name="lvBlobs"
+					ItemsSource="{Binding SortedBlobs}"
+					CachingStrategy="RecycleElement"
+					IsVisible="{Binding IsNotBusy}"
+					IsPullToRefreshEnabled="{Binding IsNotBusy}"
+					RefreshCommand="{Binding ForceRefreshCommand}"
+					IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+					fe:ListViewItemTappedAttached.Command="{Binding ItemTapCommand}"
+					HasUnevenRows ="true"
+					AbsoluteLayout.LayoutFlags="All" 
+        			AbsoluteLayout.LayoutBounds="0,0,1,1"
+					>
+					<ListView.SeparatorColor>
+		                <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                            <On Platform="WinPhone" Value="{StaticResource ListSeparator}" />
+                        </OnPlatform>
+
+                            
+		            </ListView.SeparatorColor>
+		            <ListView.Header>
+						<local:CardView>
+							<StackLayout Orientation="Vertical" Spacing="0">
+						    <!--<StackLayout Padding="10,5,0,5" BackgroundColor="#cccccc">-->
+						    <Grid Padding="{StaticResource StandardPadding}">
+								<Grid.RowDefinitions>
+	            					<RowDefinition Height="*"/>
+						            <RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+									<RowDefinition Height="*"/>
+						        </Grid.RowDefinitions>
+		                        <Grid.ColumnDefinitions>
+		                            <ColumnDefinition Width="Auto"/>
+		                            <ColumnDefinition Width="*"/>
+		                        </Grid.ColumnDefinitions>
+		                        	<Label Text="Blob Count" Grid.Row="0" Style="{DynamicResource ASEListItemTextStyle}"/>
+									<Label Text="{Binding BlobCount}" Grid.Row="0" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+									<Label Text="Total Size" Grid.Row="1" Style="{DynamicResource ASEListItemTextStyle}"/>
+									<Label Text="{Binding TotalBlobSize}" Grid.Row="1" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+						        	<Label Text="Public Read Access" Grid.Row="2" Style="{DynamicResource ASEListItemTextStyle}"/>
+									<Label Text="{Binding Container.BaseContainer.Properties.PublicAccess}" Grid.Row="2" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+									<Label Text="Lease State" Grid.Row="3" Style="{DynamicResource ASEListItemTextStyle}"/>
+									<Label Text="{Binding Container.BaseContainer.Properties.LeaseState}" Grid.Row="3" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+									<Label Text="Lease Status" Grid.Row="4" Style="{DynamicResource ASEListItemTextStyle}"/>
+									<Label Text="{Binding Container.BaseContainer.Properties.LeaseStatus}" Grid.Row="4" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+								</Grid>
+								
+						        <local:SectionDivider />
+						    <!--</StackLayout>-->
+							</StackLayout>
+						</local:CardView>
+					  </ListView.Header>
+					<ListView.ItemTemplate>
+				        <DataTemplate>
+				          <ViewCell>
+				             <local:BlobCellView />
+				          </ViewCell>
+							<!--<SwitchCell Text="{Binding Name}" On="{Binding IsSubOn}" />-->
+				        </DataTemplate> 
+			      	</ListView.ItemTemplate>
+			    </ListView>
+			    <StackLayout IsVisible="{Binding IsBusy}"
+	                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+	                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+	                                    <StackLayout.Orientation>
+	                                    <OnPlatform x:TypeArguments="StackOrientation">
+                                            <On Platform="iOS" Value="Horizontal" />
+                                        </OnPlatform>
+	                                   </StackLayout.Orientation>
+			            <ActivityIndicator IsRunning="{Binding IsBusy}" >
+			                <ActivityIndicator.Color>
+			                    <OnPlatform x:TypeArguments="Color" >
+                                    <On Platform="Android" Value="{StaticResource Accent}" />
+                                </OnPlatform>
+			                </ActivityIndicator.Color>
+			            </ActivityIndicator>
+			            <Label Text="Loading Blobs..." HorizontalOptions="Center" Style="{DynamicResource ASEListItemTextStyle}"/>
+			       </StackLayout>
+			        <StackLayout IsVisible="{Binding NoBlobsFound}"
+			                                   HorizontalOptions="FillAndExpand"
+			                                   VerticalOptions="CenterAndExpand"
+			                                   AbsoluteLayout.LayoutFlags="All"
+			                                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+			                    BackgroundColor="{DynamicResource WindowBackground}"
+			                    Padding="16,0">
+			            <Label Text="{Binding NoBlobsFoundMessage}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="22" TextColor="#D3D2D2"/>
+			       </StackLayout>							       
+			</AbsoluteLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

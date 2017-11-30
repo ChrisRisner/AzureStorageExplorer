@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AzureStorageExplorer.ASEGroupHeaderView">
+	<StackLayout VerticalOptions="Center">
+        <StackLayout.BackgroundColor>
+            <OnPlatform x:TypeArguments="Color">
+                <On Platform="Android" Value="#F5F5F5" />
+                <On Platform="WinPhone" Value="#F5F5F5" />
+            </OnPlatform>
+        </StackLayout.BackgroundColor>
+        <StackLayout.Padding>
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="iOS" Value="16,0" />
+                <On Platform="Android" Value="16,8" />
+                <On Platform="WinPhone" Value="16,8" />
+            </OnPlatform>
+        </StackLayout.Padding>
+        <Label Text="{Binding Key}" 
+            VerticalOptions="Center" 
+            VerticalTextAlignment="Center">
+            <Label.FontAttributes>
+                <OnPlatform x:TypeArguments="FontAttributes" >
+                        <On Platform="iOS" Value="Bold" />
+                </OnPlatform>
+            </Label.FontAttributes>
+             <Label.FontSize>
+                <OnPlatform x:TypeArguments="x:Double">
+                    <On Platform="iOS" Value="16" />
+                    <On Platform="Android" Value="18" />
+                    <On Platform="WinPhone" Value="16" />
+                </OnPlatform>
+            </Label.FontSize>
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="Android" Value="sans-serif-light" />
+                </OnPlatform>
+            </Label.FontFamily>
+            <Label.TextColor>
+                <OnPlatform x:TypeArguments="Color" >
+                    <On Platform="WinPhone" Value="Black" />
+                </OnPlatform>
+            </Label.TextColor>
+        </Label>
+    </StackLayout>
+</ContentView>

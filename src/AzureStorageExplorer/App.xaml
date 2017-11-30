@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="AzureStorageExplorer.App">
+	<Application.Resources>
+		<!-- Application resource dictionary -->
+		<ResourceDictionary>
+			
+			<Color x:Key="Primary">#0078d7</Color>
+		    <Color x:Key="PrimaryDark">#003c6c</Color>
+		    <Color x:Key="Accent">#8ac340</Color>
+			<Color x:Key="LightPrimary">#B3E5FC</Color>
+			<Color x:Key="TextIcon">#FFFFFF</Color>
+			<Color x:Key="PrimaryText">#212121</Color>
+			<Color x:Key="SecondaryText">#727272</Color>
+			<Color x:Key="NavigationText">White</Color>
+			<Color x:Key="Divider">#B6B6B6</Color>
+			<Color x:Key="Activated_color">#E8E8E8</Color>
+			<Color x:Key="Window_background">#FFF5F5F5</Color>
+			<Color x:Key="DetailTextColor">#979797</Color>
+
+			<OnPlatform x:TypeArguments="Color" x:Key="WindowBackground">
+                <On Platform="iOS" Value="White" />
+                <On Platform="Android" Value="#F5F5F5" />
+                <On Platform="WinPhone" Value="White" />
+            </OnPlatform>
+			<OnPlatform x:TypeArguments="Color" x:Key="WindowBackgroundTable">
+                <On Platform="iOS" Value="#EFEFF4" />
+                <On Platform="Android" Value="#F5F5F5" />
+                <On Platform="WinPhone" Value="EFEFF4" />
+            </OnPlatform>
+			
+			<Color x:Key="ButtonBorder">#C8C7CC</Color>
+			<Color x:Key="ListSeparator">#C8C7CC</Color>
+
+			<OnPlatform x:TypeArguments="Thickness" x:Key="CardPadding">
+                <On Platform="Android" Value="8,16" />
+                <On Platform="iOS" Value="0,0,0,16" />
+                <On Platform="WinPhone" Value="0,0,0,16" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:Double" x:Key="CardSpacing">
+                <On Platform="Android" Value="16" />
+                <On Platform="iOS" Value="0" />
+                <On Platform="WinPhone" Value="0" />
+            </OnPlatform>
+
+			<OnPlatform x:TypeArguments="x:Double" x:Key="ASEListItemTextStyleSize" >
+                <On Platform="Android" Value="16" />
+                <On Platform="iOS" Value="16" />
+                <On Platform="WinPhone" Value="13" />
+            </OnPlatform>
+			<OnPlatform x:TypeArguments="x:Double" x:Key="ASEPopupTitleTextStyleSize" >
+                <On Platform="Android" Value="20" />
+                <On Platform="iOS" Value="20" />
+                <On Platform="WinPhone" Value="16" />
+            </OnPlatform>
+
+			<Thickness x:Key="SmallPadding">4</Thickness>
+            <Thickness x:Key="MediumPadding">8</Thickness>
+            <Thickness x:Key="StandardPadding">16</Thickness>
+
+            <x:Double x:Key="SmallSpacing">4</x:Double>
+            <x:Double x:Key="MediumSpacing">8</x:Double>
+            <x:Double x:Key="StandardSpacing">16</x:Double>
+
+
+			<Style x:Key="ASEPopupTitleStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="{DynamicResource ASEPopupTitleTextStyleSize}" />
+			</Style>
+			
+            <Style x:Key="ASEListItemTextStyle" TargetType="Label" BaseResourceKey="ListItemTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemTextStyleSize}" />
+            </Style>
+
+            <Style x:Key="ASEDetailTextStyle" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemDetailTextStyleSize}" />
+            </Style>
+
+
+            <Style x:Key="SectionLabelTextStyle" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource LabelSectionFontSize}" />
+                <Setter Property="TextColor" Value="{DynamicResource LabelSectionText}"/>
+                <Setter Property="FontFamily" Value="{DynamicResource SectionLabelFontFamily}"/>
+            </Style>
+
+            <Style x:Key="ASEListItemDetailTextStyle" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemDetailTextStyleSize}" />
+                <Setter Property="TextColor" Value="{DynamicResource DetailTextColor}"/>
+            </Style>
+
+            <Style x:Key="ASEListItemDetailPrimaryTextStyle" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemDetailTextStyleSize}" />
+                <Setter Property="TextColor" Value="{DynamicResource Primary}"/>
+            </Style>
+
+             <Style x:Key="EventTitleStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemTextStyleSize}" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{DynamicResource SectionLabelFontFamily}"/>
+                <Setter Property="Font" Value="Semibold"/>
+            </Style>
+
+              <Style x:Key="ASEListItemTextStyleBold" TargetType="Label" BaseResourceKey="ListItemTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemTextStyleSize}" />
+
+                <Setter Property="Font" Value="Semibold"/>
+            </Style>
+
+            <Style x:Key="ASEDetailTextStyleBold" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemDetailTextStyleSize}" />
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style x:Key="ASEListItemDetailTextStyleBold" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ASEListItemDetailTextStyleSize}" />
+                <Setter Property="TextColor" Value="{DynamicResource DetailTextColor}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+             <Style x:Key="ASEListItemDetailPrimaryTextStyleBold" TargetType="Label" BaseResourceKey="ListItemDetailTextStyle">
+                <Setter Property="FontSize" Value="{DynamicResource ÅSEListItemDetailTextStyleSize}" />
+                <Setter Property="TextColor" Value="{DynamicResource Primary}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+		</ResourceDictionary>
+	</Application.Resources>
+</Application>

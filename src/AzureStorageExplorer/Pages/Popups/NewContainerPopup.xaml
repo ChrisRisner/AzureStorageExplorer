@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="AzureStorageExplorer.NewContainerPopup"
+             xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials">
+  	<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+	<Frame Margin="0" Padding="5" >
+		<Frame.Content>
+			<Grid Padding="5" Margin="2" BackgroundColor="White">
+				<Grid.RowDefinitions>
+		            <RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>	
+		        </Grid.RowDefinitions>
+		        <Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+					<Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center"
+						Style="{DynamicResource ASEPopupTitleStyle}"
+						Text="Create Container" />
+					<Label Grid.Row="1" Grid.Column="0"
+						Text="Name:" VerticalTextAlignment="Center" />
+					<Entry Grid.Row="1" Grid.Column="1" Text="{Binding ContainerName}"/>
+					<Label Grid.Row="2" Grid.Column="0"
+						Text="Storage Account:" VerticalTextAlignment="Center"/>					
+					<Picker 
+						Grid.Row="2" Grid.Column="1"
+						ItemsSource="{Binding StorageAccounts}"
+						SelectedItem="{Binding SelectedStorageAccount}"
+						ItemDisplayBinding="{Binding Name}"
+						 Title="Select..." />
+
+					
+					<Label Grid.Row="3" Grid.Column="0"
+						Text="Access Type:" VerticalTextAlignment="Center"/>										
+
+					<Picker 
+						Grid.Row="3" Grid.Column="1"
+						ItemsSource="{Binding AccessTypes}"
+						SelectedItem="{Binding SelectedAccessType}"
+						Title="Select..." />
+					<StackLayout Grid.Row="4" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center">
+						<Button x:Name="btnCreate" Text="Create" Command="{Binding CreateContainerCommand}"
+							IsEnabled="{Binding ReadyToSave}"/>
+						<Button x:Name="btnCancel" Text="Cancel" Command="{Binding CancelCommand}" />
+					</StackLayout>
+					<!--<ActivityIndicator IsRunning="{Binding IsBusy}" HorizontalOptions="Center" VerticalOptions="Center" >
+		                <ActivityIndicator.Color>
+		                    <OnPlatform x:TypeArguments="Color" Android="{StaticResource Accent}"/>
+		                </ActivityIndicator.Color>
+		            </ActivityIndicator>-->
+			</Grid>
+			<!--<StackLayout Padding="5" Margin="2" BackgroundColor="White" Orientation="Vertical">
+					<Label Text="Create Container" />
+					<Label Text="Name:" />
+					<Entry />
+					<Label Text="Subscription" />
+					<Picker />
+					<Button Text="Create" />
+					<Button Text="Cancel" />
+			</StackLayout>-->
+		</Frame.Content>
+	</Frame>
+</StackLayout>
+</pages:PopupPage>

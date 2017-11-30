@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{EE4BDA53-6238-476A-854F-C180DC440057}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>AzureStorageExplorer</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)AzureStorageExplorerPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Android\MenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SubscriptionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\ContainersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\TablesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\QueuesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\StorageAccountsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\SubscriptionCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\StorageAccountCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\SettingsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\ContainerCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\BlobsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\BlobCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\ASEGroupHeaderView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\BlobDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\NewContainerPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteContainerPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\LabelSection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\HeaderDivider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\FooterDivider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controls\SectionDivider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteBlobPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\QueueCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\NewQueuePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\QueueMessagesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\QueueMessageCellView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteQueuePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\NewQueueMessagePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\QueueMessageDetailsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteQueueMessagePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\TableCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\NewTablePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\TableRowsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\TableRowCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteTablePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\iOS\MorePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\FileSharesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\FileShareCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\Popups\NewFileSharePopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Pages\FilesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Cells\FileCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)AzureStorageExplorerPage.xaml.cs">
+      <DependentUpon>AzureStorageExplorerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IToast.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Constants.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ViewModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ASELogger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AppPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Android\MenuPage.xaml.cs">
+      <DependentUpon>..\..\AzureStorageExplorer.PCL\Pages\Android\MenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Android\RootPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\iOS\RootPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ASENavigationPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NavigationView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\NavigationService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\LoginViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ISignOnClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureSubscriptionInfoService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Tenant.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureStorageInfoService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\SubscriptionInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SubscriptionsPage.xaml.cs">
+      <DependentUpon>SubscriptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ContainersPage.xaml.cs">
+      <DependentUpon>ContainersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\TablesPage.xaml.cs">
+      <DependentUpon>TablesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\QueuesPage.xaml.cs">
+      <DependentUpon>QueuesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\StorageAccountsPage.xaml.cs">
+      <DependentUpon>StorageAccountsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SubscriptionsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\SubscriptionCell.xaml.cs">
+      <DependentUpon>SubscriptionCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\StorageAccountsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\StorageAccountCell.xaml.cs">
+      <DependentUpon>StorageAccountCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Gravatar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MD5Core.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\ContainersViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\ContainerCell.xaml.cs">
+      <DependentUpon>ContainerCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\SettingsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\CloudBlobClientExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BlobsPage.xaml.cs">
+      <DependentUpon>BlobsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BlobsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\BlobCell.xaml.cs">
+      <DependentUpon>BlobCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ASECloudBlobContainer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GroupingExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\ASEGroupHeaderView.xaml.cs">
+      <DependentUpon>ASEGroupHeaderView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\BlobDetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\BlobDetailsPage.xaml.cs">
+      <DependentUpon>BlobDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\NewContainerPopup.xaml.cs">
+      <DependentUpon>NewContainerPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\NewContainerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BlobAccessType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteContainerPopup.xaml.cs">
+      <DependentUpon>DeleteContainerPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DeleteContainerViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\CardView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\LabelSection.xaml.cs">
+      <DependentUpon>LabelSection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\HeaderDivider.xaml.cs">
+      <DependentUpon>HeaderDivider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\FooterDivider.xaml.cs">
+      <DependentUpon>FooterDivider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\SectionDivider.xaml.cs">
+      <DependentUpon>SectionDivider.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteBlobPopup.xaml.cs">
+      <DependentUpon>DeleteBlobPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DeleteBlobViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\BoolConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\MediaTypeMapper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\FileType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\FileSizeHelper.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IFilePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\QueuesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ASECloudQueue.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\QueueCell.xaml.cs">
+      <DependentUpon>QueueCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\NewQueuePopup.xaml.cs">
+      <DependentUpon>NewQueuePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\NewQueueViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\QueueMessagesPage.xaml.cs">
+      <DependentUpon>QueueMessagesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\QueueMessagesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\QueueMessageCellView.xaml.cs">
+      <DependentUpon>QueueMessageCellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteQueuePopup.xaml.cs">
+      <DependentUpon>DeleteQueuePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DeleteQueueViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\NewQueueMessagePopup.xaml.cs">
+      <DependentUpon>NewQueueMessagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\NewQueueMessageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\QueueMessageDetailsPage.xaml.cs">
+      <DependentUpon>QueueMessageDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\QueueMessageDetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteQueueMessagePopup.xaml.cs">
+      <DependentUpon>DeleteQueueMessagePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DeleteQueueMessageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TablesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ASECloudTable.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\TableCell.xaml.cs">
+      <DependentUpon>TableCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\NewTablePopup.xaml.cs">
+      <DependentUpon>NewTablePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\NewTableViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\TableRowsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\TableRowsPage.xaml.cs">
+      <DependentUpon>TableRowsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\TableRowCell.xaml.cs">
+      <DependentUpon>TableRowCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\DeleteTablePopup.xaml.cs">
+      <DependentUpon>DeleteTablePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\DeleteTableViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\iOS\MorePage.xaml.cs">
+      <DependentUpon>MorePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\MorePageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\MenuItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NonScrollableListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\AlwaysScrollView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AboutPage.xaml.cs">
+      <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\AboutViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FileSharesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ASECloudFileShare.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\FileSharesPage.xaml.cs">
+      <DependentUpon>FileSharesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\FileShareCell.xaml.cs">
+      <DependentUpon>FileShareCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Popups\NewFileSharePopup.xaml.cs">
+      <DependentUpon>NewFileSharePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\NewFileShareViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\FilesPage.xaml.cs">
+      <DependentUpon>FilesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModel\FilesViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Cells\FileCell.xaml.cs">
+      <DependentUpon>FileCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ILaunchTwitter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Interfaces\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewModel\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Cells\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\Popups\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
+  </ItemGroup>
+</Project>

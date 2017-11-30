@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+             x:Class="AzureStorageExplorer.NewQueueMessagePopup"
+             xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials">
+  	<StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="0" Margin="0">
+	<Frame Margin="0" Padding="5" >
+		<Frame.Content>
+			<Grid Padding="5" Margin="2" BackgroundColor="White">
+				<Grid.RowDefinitions>
+		            <RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>
+					<RowDefinition Height="*"/>	
+					<!--<RowDefinition Height="*"/>-->
+					<RowDefinition Height="*"/>	
+		        </Grid.RowDefinitions>
+		        <Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+					<Label Grid.Row="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Center"
+						Style="{DynamicResource ASEPopupTitleStyle}"
+						Text="Create Message" />
+					<Label Grid.Row="1" Grid.Column="0"
+						Text="Message Text:" VerticalTextAlignment="Center" />
+					<Entry Grid.Row="2" Grid.ColumnSpan="2" Text="{Binding MessageText}"/>
+					<Label Grid.Row="3" Grid.Column="0"
+						Text="Expires in:" VerticalTextAlignment="Center"/>										
+
+					<Entry Grid.Row="4" Grid.Column="0" 
+						HorizontalTextAlignment="End"
+						Text="{Binding ExpiresInTime}"/>
+
+					<Picker 
+						Grid.Row="4" Grid.Column="1"
+						ItemsSource="{Binding ExpiresInPeriods}"
+						SelectedItem="{Binding SelectedExpirationTimePeriod}"
+					 	Title="Select..." />	
+					<!--<StackLayout Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal">
+						<Switch IsToggled="{Binding EncodeMessage}"/>
+						<Label Text="Encode message in Base64" />	
+					</StackLayout>-->
+
+					<StackLayout Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalOptions="Center">
+						<Button x:Name="btnCreate" Text="Create" Command="{Binding CreateQueueMessageCommand}"
+							IsEnabled="{Binding ReadyToSave}"/>
+						<Button x:Name="btnCancel" Text="Cancel" Command="{Binding CancelCommand}" />
+					</StackLayout>
+			</Grid>
+		</Frame.Content>
+	</Frame>
+</StackLayout>
+</pages:PopupPage>

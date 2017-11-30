@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+		xmlns="http://xamarin.com/schemas/2014/forms" 
+		xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+		x:Class="AzureStorageExplorer.TableRowsPage"
+		xmlns:local="clr-namespace:AzureStorageExplorer;assembly=AzureStorageExplorer"
+		xmlns:fe="clr-namespace:FreshEssentials;assembly=FreshEssentials"
+		Title="Table Rows"
+		Icon="tab_feed.png">	
+	<ContentPage.Content>
+		<Grid RowSpacing="0">
+			<Grid.RowDefinitions>
+	            <RowDefinition Height="*"/>
+	        </Grid.RowDefinitions>
+			<AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+				<ListView
+					x:Name="lvTableRows"
+					ItemsSource="{Binding TableRows}"
+					CachingStrategy="RecycleElement"
+					IsVisible="{Binding IsNotBusy}"
+					IsPullToRefreshEnabled="{Binding IsNotBusy}"
+					RefreshCommand="{Binding ForceRefreshCommand}"
+					IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+					fe:ListViewItemTappedAttached.Command="{Binding ItemTapCommand}"
+					HasUnevenRows ="true"
+					AbsoluteLayout.LayoutFlags="All" 
+        			AbsoluteLayout.LayoutBounds="0,0,1,1"
+					>
+					<ListView.SeparatorColor>
+		                <OnPlatform x:TypeArguments="Color">
+                            <On Platform="iOS" Value="{StaticResource ListSeparator}" />
+                            <On Platform="WinPhone" Value="{StaticResource ListSeparator}" />
+                        </OnPlatform>
+		            </ListView.SeparatorColor>
+		            <ListView.Header>
+						<local:CardView>
+							<StackLayout Orientation="Vertical" Spacing="0">
+						    <!--<StackLayout Padding="10,5,0,5" BackgroundColor="#cccccc">-->
+						    	<Grid Padding="{StaticResource StandardPadding}">
+									<Grid.RowDefinitions>
+		            					<RowDefinition Height="*"/>
+										<RowDefinition Height="*"/>
+							        </Grid.RowDefinitions>
+			                        <Grid.ColumnDefinitions>
+			                            <ColumnDefinition Width="Auto"/>
+			                            <ColumnDefinition Width="*"/>
+			                        </Grid.ColumnDefinitions>
+			                        	<Label Text="Rows Loaded" Grid.Row="0" Style="{DynamicResource ASEListItemTextStyle}"/>
+										<Label Text="{Binding RowsLoadedCount}" Grid.Row="0" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+										<Label Text="Partition Key" Grid.Row="1" Style="{DynamicResource ASEListItemTextStyle}"/>
+										<Label Text="Row Key" Grid.Row="1" Grid.Column="1" Style="{DynamicResource ASEListItemTextStyle}" HorizontalOptions="End"/>
+								</Grid>
+								
+						        <local:SectionDivider />
+						    <!--</StackLayout>-->
+							</StackLayout>
+						</local:CardView>
+					  </ListView.Header>
+					<ListView.Footer>						
+						<Button Text="Load More Rows" 
+						HorizontalOptions="Center"
+						Command="{Binding LoadMoreRowsCommand}"/>
+					</ListView.Footer>
+					<ListView.ItemTemplate>
+				        <DataTemplate>
+				          <ViewCell>
+				             <local:TableRowCellView />
+				          </ViewCell>
+				        </DataTemplate> 
+			      	</ListView.ItemTemplate>
+			    </ListView>
+			    <StackLayout IsVisible="{Binding IsBusy}"
+	                                   AbsoluteLayout.LayoutFlags="PositionProportional"
+	                                   AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1">
+	                                    <StackLayout.Orientation>
+	                                    <OnPlatform x:TypeArguments="StackOrientation">
+                                            <On Platform="iOS" Value="Horizontal" />
+                                        </OnPlatform>
+	                                   </StackLayout.Orientation>
+			            <ActivityIndicator IsRunning="{Binding IsBusy}" >
+			                <ActivityIndicator.Color>
+			                    <OnPlatform x:TypeArguments="Color">
+                                    <On Platform="Android" Value="{StaticResource Accent}" />
+                            </OnPlatform>
+			                </ActivityIndicator.Color>
+			            </ActivityIndicator>
+			            <Label Text="Loading Table Rows..." HorizontalOptions="Center" Style="{DynamicResource ASEListItemTextStyle}"/>
+			       </StackLayout>
+			        <StackLayout IsVisible="{Binding NoTableRowsFound}"
+			                                   HorizontalOptions="FillAndExpand"
+			                                   VerticalOptions="CenterAndExpand"
+			                                   AbsoluteLayout.LayoutFlags="All"
+			                                   AbsoluteLayout.LayoutBounds="0,0,1,1"
+			                    BackgroundColor="{DynamicResource WindowBackground}"
+			                    Padding="16,0">
+			            <Label Text="{Binding NoTableRowsFoundMessage}" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" FontSize="22" TextColor="#D3D2D2"/>
+			       </StackLayout>							       
+			</AbsoluteLayout>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>
